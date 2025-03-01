@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Web Calculator",
+  "version": "1.0",
+  "description": "Perform calculations on selected numbers on web pages",
+  "permissions": ["contextMenus", "activeTab", "scripting", "clipboardWrite"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["calculator.html", "calculator.js", "calculator.css"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "calculator.html",
+    "default_icon": {
+      "16": "/icon.png",
+      "48": "/icon.png",
+      "128": "/icon.png"
+    }
+  },
+  "icons": {
+    "16": "/icon.png",
+    "48": "/icon.png",
+    "128": "/icon.png"
+  }
+}
